@@ -25,6 +25,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.dig-clock::before {
+  content: "";
+  position: absolute;
+  /* background: linear-gradient(45deg, #b4803a, #fd1d1d, #fcb045); */
+  background: linear-gradient(45deg, #24ff6d, #2f93f1, #ff5e9a);
+  background-size: 200%, 200%;
+  top: -5px;
+  left: -5px;
+  bottom: -5px;
+  right: -5px;
+  filter: blur(50px);
+  z-index: -1;
+  animation: glow 7s ease infinite;
+}
+@keyframes glow {
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
 }
 
  .time {
@@ -88,4 +114,89 @@ body {
   background: -webkit-linear-gradient(90deg, #24ff6d, #2f93f1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+}
+
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-bottom: 5px;
+  background: -webkit-linear-gradient(90deg, #ae4af6, #ff98d1);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.date, .month-name, .year {
+  margin-left: 8px;
+}
+
+.dot-menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  font-size: 1.5em;
+  color: #efefef;
+  cursor: pointer;
+}
+
+.dot-menu {
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  list-style: none;
+  z-index: 90;
+  background: #353e54;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+.dot-menu.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dot-menu .menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.format-text {
+  font-size: 0.9em;
+  color: #efefef;
+  margin-right: 20px;
+}
+.format-switch-btn {
+  width: 50px;
+  height: 20px;
+  background: #485470;
+  border-radius: 75px;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1), inset -2px -2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.format-switch-btn::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 17px;
+  background: #ff5050;
+  border-radius: 50%;
+  box-shadow: 0 5px 25px #ff5050;
+  transform: translateX(-13px);
+  transition: 0.4s ease;
+  transition-property: background, transform;
+}
+.format-switch-btn.active::before {
+  background: #0bff56;
+  box-shadow: 0 5px 25px #0bff56;
+  transform: translateX(12px);
 }
